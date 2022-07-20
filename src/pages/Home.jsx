@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import sendUser from '../service';
 
 function Home() {
   const [name, setName] = useState('');
@@ -16,7 +17,7 @@ function Home() {
       email: () => setEmail(value),
       phone: () => setPhone(value),
       message: () => setMessage(value),
-      archive: () => setArchive(value),
+      archive: () => setArchive(target.files[0]),
     };
 
     inputDictionary[id]();
@@ -39,28 +40,35 @@ function Home() {
   function createUser() {
     verifyInputs();
 
-    if (!error.length) {
-      console.log('Criando usuário');
-    }
+    const user = {
+      name,
+      email,
+      phone,
+      message,
+    };
+
+    if (!error.length) sendUser(user, archive);
   }
 
   return (
     <div>
       <label htmlFor="name">
+        Nome:
         <input onChange={handleChange} id="name" type="text" />
       </label>
       <label htmlFor="email">
+        Email:
         <input onChange={handleChange} id="email" type="email" />
       </label>
       <label htmlFor="phone">
-        <input onChange={handleChange} id="phone" type="text" />
+        Telefone:
+        <input onChange={handleChange} id="phone" type="tel" />
       </label>
       <label htmlFor="message">
+        Mensagem:
         <textarea onChange={handleChange} id="message" type="text" />
       </label>
-      <label htmlFor="archive">
-        <input onChange={handleChange} id="archive" type="file" />
-      </label>
+      <input onChange={handleChange} id="archive" type="file" />
 
       {error.length && <span>{error}</span>}
 

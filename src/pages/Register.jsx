@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import Header from '../components/Header';
 import sendUser from '../service';
 
 function Register() {
@@ -52,27 +53,30 @@ function Register() {
 
   return (
     <div>
-      <label htmlFor="name">
-        Nome:
-        <input onChange={handleChange} id="name" type="text" />
-      </label>
-      <label htmlFor="email">
-        Email:
-        <input onChange={handleChange} id="email" type="email" />
-      </label>
-      <label htmlFor="phone">
-        Telefone:
-        <input onChange={handleChange} id="phone" type="tel" />
-      </label>
-      <label htmlFor="message">
-        Mensagem:
-        <textarea onChange={handleChange} id="message" type="text" />
-      </label>
-      <input onChange={handleChange} id="archive" type="file" />
+      <Header />
+      <div>
+        <label htmlFor="name">
+          Nome:
+          <input onChange={handleChange} id="name" type="text" />
+        </label>
+        <label htmlFor="email">
+          Email:
+          <input onChange={handleChange} id="email" type="email" />
+        </label>
+        <label htmlFor="phone">
+          Telefone:
+          <input onChange={handleChange} id="phone" type="tel" />
+        </label>
+        <label htmlFor="message">
+          Mensagem:
+          <textarea onChange={handleChange} id="message" type="text" />
+        </label>
+        <input onChange={handleChange} id="archive" type="file" />
 
-      {error.length && <span>{error}</span>}
+        {error.length && <span>{error}</span>}
 
-      <button onClick={createUser} type="button">Cadastrar</button>
+        <button onClick={createUser} type="button">Cadastrar</button>
+      </div>
     </div>
   );
 }

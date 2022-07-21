@@ -56,7 +56,11 @@ function Register() {
       message,
     };
 
-    if (!error.length) sendUser(user, archive);
+    if (!error.length) {
+      sendUser(user, archive);
+
+      alert('Usuário criado com sucesso!');
+    }
   }
 
   return (

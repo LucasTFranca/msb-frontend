@@ -1,6 +1,8 @@
-import React, { useState } from 'react';
-import Header from '../components/Header';
-import { sendUser } from '../service';
+import React, { useEffect, useState } from 'react';
+import Header from '../../components/Header';
+import { sendUser } from '../../service';
+
+import './style.css';
 
 function Register() {
   const [name, setName] = useState('');
@@ -9,6 +11,12 @@ function Register() {
   const [message, setMessage] = useState('');
   const [archive, setArchive] = useState();
   const [error, setError] = useState('');
+  const [errorVisible, setErrorVisible] = useState(false);
+
+  useEffect(() => {
+    if (error.length > 0) setErrorVisible(true);
+    else setErrorVisible(false);
+  }, [error]);
 
   function handleChange({ target }) {
     const { id, value } = target;
@@ -54,28 +62,30 @@ function Register() {
   return (
     <div>
       <Header />
-      <div>
-        <label htmlFor="name">
-          Nome:
-          <input onChange={handleChange} id="name" type="text" />
-        </label>
-        <label htmlFor="email">
-          Email:
-          <input onChange={handleChange} id="email" type="email" />
-        </label>
-        <label htmlFor="phone">
-          Telefone:
-          <input onChange={handleChange} id="phone" type="tel" />
-        </label>
-        <label htmlFor="message">
-          Mensagem:
-          <textarea onChange={handleChange} id="message" type="text" />
-        </label>
-        <input onChange={handleChange} id="archive" type="file" />
+      <div className="register">
+        <div className="container">
+          <label htmlFor="name">
+            Nome:
+            <input onChange={handleChange} id="name" type="text" />
+          </label>
+          <label htmlFor="email">
+            Email:
+            <input onChange={handleChange} id="email" type="email" />
+          </label>
+          <label htmlFor="phone">
+            Telefone:
+            <input onChange={handleChange} id="phone" type="tel" />
+          </label>
+          <label htmlFor="message">
+            Mensagem:
+            <textarea onChange={handleChange} id="message" type="text" />
+          </label>
+          <input onChange={handleChange} id="archive" type="file" />
 
-        {error.length && <span>{error}</span>}
+          <button onClick={createUser} type="button">Cadastrar</button>
 
-        <button onClick={createUser} type="button">Cadastrar</button>
+          {errorVisible && <span className="error">{error}</span>}
+        </div>
       </div>
     </div>
   );

@@ -1,13 +1,15 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
+import './style.css';
+
 function UserCard({ user }) {
   const {
     name, email, phone, fileName, message,
   } = user;
 
   return (
-    <div>
+    <div className="card">
       <span>{name}</span>
       <span>{email}</span>
       <span>{phone}</span>

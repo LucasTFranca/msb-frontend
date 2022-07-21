@@ -1,0 +1,15 @@
+.card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 15em;
+  height: 19vh;
+  margin: 1em;
+  padding: 1em;
+  border-radius: 10px;
+  background: white;
+}
+
+.card span {
+  margin-top: 0.2em;
+}

@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import Header from '../components/Header';
-import sendUser from '../service';
+import { sendUser } from '../service';
 
 function Register() {
   const [name, setName] = useState('');
@@ -31,7 +31,7 @@ function Register() {
 
     if (phone.length < 8) return setError('Telefone precisa ter mais de 8 dígitos');
 
-    if (message.length < 10) return setError('Mensagem precisa ter mais de 10 caracteres');
+    if (message.length < 10 || message.length > 150) return setError('Mensagem precisa ter mais de 10 caracteres e menos de 150');
 
     if (!archive) return setError('Você deve adicionar um arquivo');
 

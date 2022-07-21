@@ -29,4 +29,13 @@ const sendUser = async (user, archive) => {
   });
 };
 
-export default sendUser;
+const getUsers = async () => {
+  const { data } = await axios.get(`${baseUrl}/user/`);
+
+  return data;
+};
+
+export {
+  sendUser,
+  getUsers,
+};

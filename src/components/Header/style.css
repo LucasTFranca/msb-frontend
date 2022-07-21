@@ -1,0 +1,19 @@
+.header {
+  display: flex;
+  justify-content: space-between;
+  padding-top: 0.5em;
+  padding-bottom: 0.5em;
+  padding-left: 2em;
+  padding-right: 2em;
+  height: 4vh;
+  background: #242423;
+}
+
+.header button {
+  cursor: pointer;
+  border: 0;
+  background: #242423;
+  color: aliceblue;
+  font-size: 14px;
+  font-weight: 500;
+}

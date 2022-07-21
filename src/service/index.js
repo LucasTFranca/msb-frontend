@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const baseUrl = 'http://localhost:4000';
+const baseUrl = 'https://msb-backeend.herokuapp.com';
 
 const uploadFile = async (archive) => {
   const form = new FormData();
